@@ -30,8 +30,8 @@ public class LaunchApp1 {
         stu.setCity("palakol");
 
         //step 6: perform operation
-        session.save(stu);
-
+//        session.save(stu);
+        session.persist(stu);
         //step 7: perform transaction operation
         tx.commit();
 
