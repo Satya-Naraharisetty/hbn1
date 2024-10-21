@@ -21,8 +21,8 @@ public class LaunchApp2 {
         session = sf.openSession();
 
         Student stu = new Student();
-        stu.setId(3);
-        stu.setName("sri");
+        stu.setId(5);
+        stu.setName("venkat");
         stu.setAge(22);
         stu.setCity("palakol");
 
@@ -40,12 +40,12 @@ public class LaunchApp2 {
         finally {
             if (flag) {
                 tx.commit();
-                session.close();
-                sf.close();
             }
             else {
-
+                tx.rollback();
             }
+            session.close();
+            sf.close();
         }
     }
 }
