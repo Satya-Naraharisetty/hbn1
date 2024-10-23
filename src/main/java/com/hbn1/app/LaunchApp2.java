@@ -21,8 +21,8 @@ public class LaunchApp2 {
         session = sf.openSession();
 
         Student stu = new Student();
-        stu.setId(7);
-        stu.setName("temp");
+        stu.setId(8);
+        stu.setName("cached");
         stu.setAge(22);
         stu.setCity("palakol");
 
