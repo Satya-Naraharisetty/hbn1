@@ -7,35 +7,26 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class LaunchApp2 {
+public class LaunchUpdate {
     public static void main(String[] args) {
-        Configuration cfg = null;
-        SessionFactory sf = null;
+        SessionFactory sessionFactory = new Configuration().configure().addAnnotatedClass(Student.class).buildSessionFactory();
         Session session = null;
         Transaction tx = null;
         boolean flag = false;
-
-        cfg = new Configuration();
-//        cfg.configure("hibernate.cfg.xml");
-        cfg.configure();
-        sf = cfg.buildSessionFactory();
-        session = sf.openSession();
-
-        Student stu = new Student();
-        stu.setId(10);
-        stu.setName("cached3");
-        stu.setAge(22);
-        stu.setCity("palakol");
-
-        try {
+        try{
+            session = sessionFactory.openSession();
             tx = session.beginTransaction();
-            session.persist(stu);
+            Student s = new Student();
+            s.setId(2);
+            s.setName("Sri");
+            s.setAge(22);
+            s.setCity("bhimavaram");
+            session.merge(s);
             flag = true;
-        }
-        catch (HibernateException e) {
-            e.printStackTrace();
-        }
-        catch (Exception e) {
+
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         finally {
@@ -46,7 +37,7 @@ public class LaunchApp2 {
                 tx.rollback();
             }
             session.close();
-            sf.close();
+            sessionFactory.close();
         }
     }
 }
