@@ -10,6 +10,7 @@ public class Student {
     public Student() {
         System.out.println("Zero parameterized constructor for Hibernate");
     }
+
     @Id
     @Column(name = "SId")
     private Integer id;

@@ -16,12 +16,13 @@ public class LaunchApp2 {
         boolean flag = false;
 
         cfg = new Configuration();
-        cfg.configure("hibernate.cfg.xml");
+//        cfg.configure("hibernate.cfg.xml");
+        cfg.configure();
         sf = cfg.buildSessionFactory();
         session = sf.openSession();
 
         Student stu = new Student();
-        stu.setId(8);
+        stu.setId(9);
         stu.setName("cached");
         stu.setAge(22);
         stu.setCity("palakol");
